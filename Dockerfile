@@ -13,6 +13,7 @@ RUN apt-get install -y git curl build-essential
 
 # nvm
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
+RUN cp /root/.nvm/nvm.sh /etc/profile.d/
 
 # rvm
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
