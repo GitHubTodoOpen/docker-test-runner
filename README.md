@@ -9,3 +9,4 @@ Available on Docker Hub: `fridus/docker-rvm-nvm`
 - curl
 - nvm
 - rvm
+- python
