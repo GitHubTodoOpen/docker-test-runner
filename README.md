@@ -10,3 +10,4 @@ Available on Docker Hub: `fridus/docker-rvm-nvm`
 - nvm
 - rvm
 - python
+- mysql-client-5.6

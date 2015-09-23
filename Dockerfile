@@ -9,7 +9,7 @@ ENV LC_CTYPE fr_BE.UTF-8
 
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y git curl build-essential python
+RUN apt-get install -y git curl build-essential python mysql-client-5.6
 
 # nvm
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
