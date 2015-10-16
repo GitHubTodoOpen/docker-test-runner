@@ -15,6 +15,7 @@ RUN echo "# Generate locales" && \
     apt-get install -y git \
                        curl \
                        wget \
+                       patch \
                        build-essential \
                        python \
                        mysql-client-5.6 \
