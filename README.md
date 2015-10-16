@@ -8,6 +8,7 @@ Available on Docker Hub: `igloo/test-runner`
 - git
 - curl
 - wget
+- rsync
 - patch
 - build-essential
 - nvm

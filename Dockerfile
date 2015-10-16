@@ -15,6 +15,7 @@ RUN echo "# Generate locales" && \
     apt-get install -y git \
                        curl \
                        wget \
+                       rsync \
                        patch \
                        build-essential \
                        python \
