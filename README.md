@@ -1,12 +1,13 @@
-# Docker image for iGLOO's Gitlab CI Runner
+# Docker image for running tests
 
-Docker for testing and build projects of [iGLOO](http://igloo.be).
-
-Available on Docker Hub: `fridus/docker-rvm-nvm`
+Docker for testing and build projects at [iGLOO](http://igloo.be).
+Available on Docker Hub: `igloo/test-runner`
 
 ## Features
+
 - git
 - curl
+- build-essential
 - nvm
 - rvm
 - python
