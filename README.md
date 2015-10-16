@@ -12,3 +12,4 @@ Available on Docker Hub: `igloo/test-runner`
 - rvm
 - python
 - mysql-client-5.6
+- phantomjs dependencies (libfreetype6 libfontconfig)

@@ -17,6 +17,7 @@ RUN echo "# Generate locales" && \
                        build-essential \
                        python \
                        mysql-client-5.6 \
+                       libfreetype6 libfontconfig \
                        && \
 
     echo "# Install nvm" && \
