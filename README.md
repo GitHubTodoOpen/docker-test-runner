@@ -7,6 +7,7 @@ Available on Docker Hub: `igloo/test-runner`
 
 - git
 - curl
+- wget
 - build-essential
 - nvm
 - rvm
