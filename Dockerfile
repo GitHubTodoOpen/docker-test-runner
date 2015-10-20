@@ -32,5 +32,14 @@ RUN echo "# Generate locales" && \
     curl https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer | bash -s stable --ruby && \
     echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc && \
 
+    echo "# Install wkhtmltopdf" && \
+    apt-get install -y gdebi \
+                       libssl-dev \
+                       libxrender-dev && \
+    wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb && \
+    gdebi --n wkhtmltox-0.12.2.1_linux-trusty-amd64.deb && \
+    rm -rf wkhtmltox-0.12.2.1_linux-trusty-amd64.deb && \
+    apt-get remove -y gdebi && \
+
     echo "# Clean" && \
-    apt-get clean && rm -rf /tmp/*
+    apt-get clean && apt-get autoremove -y && rm -rf /tmp/*
