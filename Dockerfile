@@ -24,7 +24,7 @@ RUN echo "# Generate locales" && \
                        && \
 
     echo "# Install nvm" && \
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash && \
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash && \
     cp /root/.nvm/nvm.sh /etc/profile.d/ && \
 
     echo "# Install rvm" && \
