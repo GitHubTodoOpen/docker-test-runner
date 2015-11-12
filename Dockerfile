@@ -21,6 +21,7 @@ RUN echo "# Generate locales" && \
                        python \
                        mysql-client-5.6 \
                        libfreetype6 libfontconfig \
+                       default-jre \
                        && \
 
     echo "# Install nvm" && \
