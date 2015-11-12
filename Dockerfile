@@ -22,6 +22,8 @@ RUN echo "# Generate locales" && \
                        mysql-client-5.6 \
                        libfreetype6 libfontconfig \
                        default-jre \
+                       firefox \
+                       xvfb \
                        && \
 
     echo "# Install nvm" && \

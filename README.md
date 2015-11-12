@@ -18,3 +18,5 @@ Available on Docker Hub: `igloo/test-runner`
 - phantomjs dependencies (libfreetype6 libfontconfig)
 - wkhtmltopdf 0.12.2
 - default-jre
+- firefox
+- xvfb
