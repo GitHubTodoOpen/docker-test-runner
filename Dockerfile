@@ -26,6 +26,14 @@ RUN echo "# Generate locales" && \
                        xvfb \
                        && \
 
+    echo "# Install google-chrome-stable" && \
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
+    sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
+    apt-get install -y apt-transport-https && \
+    apt-get update && \
+    apt-get install -y google-chrome-stable && \
+    apt-get remove -y apt-transport-https && \
+
     echo "# Install nvm" && \
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash && \
     cp /root/.nvm/nvm.sh /etc/profile.d/ && \
