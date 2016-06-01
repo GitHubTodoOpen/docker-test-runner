@@ -52,5 +52,19 @@ RUN echo "# Generate locales" && \
     rm -rf wkhtmltox-0.12.2.1_linux-trusty-amd64.deb && \
     apt-get remove -y gdebi && \
 
+    echo "# Install docker client" && \
+    export DOCKER_BUCKET=get.docker.com && \
+    export DOCKER_VERSION=1.11.1 && \
+    export DOCKER_SHA256=893e3c6e89c0cd2c5f1e51ea41bc2dd97f5e791fcfa3cee28445df277836339d && \
+  	curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-$DOCKER_VERSION.tgz" -o docker.tgz && \
+  	echo "${DOCKER_SHA256} *docker.tgz" | sha256sum -c - && \
+  	tar -xzvf docker.tgz && \
+  	mv docker/* /usr/local/bin/ && \
+  	rmdir docker && \
+  	rm docker.tgz && \
+  	docker -v && \
+
     echo "# Clean" && \
     apt-get clean && apt-get autoremove -y && rm -rf /tmp/*
+
+ENV DOCKER_HOST tcp://docker:2375

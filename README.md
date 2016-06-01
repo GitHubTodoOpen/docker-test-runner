@@ -21,3 +21,4 @@ Available on Docker Hub: `igloo/test-runner`
 - firefox
 - google-chrome-stable
 - xvfb
+- docker-client
