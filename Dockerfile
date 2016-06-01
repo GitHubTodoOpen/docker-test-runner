@@ -27,7 +27,7 @@ RUN echo "# Generate locales" && \
                        && \
 
     echo "# Install google-chrome-stable" && \
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && \
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
     sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
     apt-get install -y apt-transport-https && \
     apt-get update && \
@@ -63,6 +63,16 @@ RUN echo "# Generate locales" && \
   	rmdir docker && \
   	rm docker.tgz && \
   	docker -v && \
+
+    echo "# Install google cloud sdk" && \
+    # Create an environment variable for the correct distribution
+    export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
+    # Add the Cloud SDK distribution URI as a package source
+    echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list && \
+    # Import the Google Cloud public key
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+    # Update and install the Cloud SDK
+    apt-get update && apt-get install google-cloud-sdk && \
 
     echo "# Clean" && \
     apt-get clean && apt-get autoremove -y && rm -rf /tmp/*

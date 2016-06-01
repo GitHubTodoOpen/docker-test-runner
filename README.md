@@ -22,3 +22,4 @@ Available on Docker Hub: `igloo/test-runner`
 - google-chrome-stable
 - xvfb
 - docker-client
+- gcloud sdk
