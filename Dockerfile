@@ -11,9 +11,16 @@ RUN echo "# Generate locales" && \
     echo "# Upgrade apt" && \
     apt-get update && apt-get upgrade -y && \
 
+    echo "# Install git" && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:git-core/ppa && \
+    apt-get update && \
+    apt-get install -y git && \
+    git --version && \
+    apt-get remove -y software-properties-common && \
+
     echo "# Install common dev dependencies via apt" && \
-    apt-get install -y git \
-                       curl \
+    apt-get install -y curl \
                        wget \
                        rsync \
                        patch \
