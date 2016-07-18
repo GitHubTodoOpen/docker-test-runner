@@ -54,8 +54,8 @@ RUN echo "# Generate locales" && \
 
     echo "# Install docker client" && \
     export DOCKER_BUCKET=get.docker.com && \
-    export DOCKER_VERSION=1.11.1 && \
-    export DOCKER_SHA256=893e3c6e89c0cd2c5f1e51ea41bc2dd97f5e791fcfa3cee28445df277836339d && \
+    export DOCKER_VERSION=1.11.2 && \
+    export DOCKER_SHA256=8c2e0c35e3cda11706f54b2d46c2521a6e9026a7b13c7d4b8ae1f3a706fc55e1 && \
   	curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-$DOCKER_VERSION.tgz" -o docker.tgz && \
   	echo "${DOCKER_SHA256} *docker.tgz" | sha256sum -c - && \
   	tar -xzvf docker.tgz && \
