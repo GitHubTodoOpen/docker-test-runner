@@ -1,5 +1,5 @@
 
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER iGLOO Team <support@igloo.be>
 
 RUN echo "# Generate locales" && \
@@ -26,7 +26,7 @@ RUN echo "# Generate locales" && \
                        patch \
                        build-essential \
                        python \
-                       mysql-client-5.6 \
+                       mysql-client-5.7 \
                        libfreetype6 libfontconfig \
                        default-jre \
                        firefox \
