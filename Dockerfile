@@ -42,7 +42,8 @@ RUN echo "# Generate locales" && \
     apt-get remove -y apt-transport-https && \
 
     echo "# Install nvm" && \
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash && \
+    export NVM_VERSION=v0.31.2 && \
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/$NVM_VERSION/install.sh | bash && \
     cp /root/.nvm/nvm.sh /etc/profile.d/ && \
 
     echo "# Install rvm" && \
