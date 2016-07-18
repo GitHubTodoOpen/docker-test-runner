@@ -83,6 +83,6 @@ RUN echo "# Generate locales" && \
     apt-get update && apt-get install google-cloud-sdk && \
 
     echo "# Clean" && \
-    apt-get clean && apt-get autoremove -y && rm -rf /tmp/*
+    apt-get clean && SUDO_FORCE_REMOVE=yes apt-get autoremove -y && rm -rf /tmp/*
 
 ENV DOCKER_HOST tcp://docker:2375
