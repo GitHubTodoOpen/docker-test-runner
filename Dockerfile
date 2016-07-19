@@ -29,9 +29,11 @@ RUN echo "# Generate locales" && \
                        mysql-client-5.7 \
                        libfreetype6 libfontconfig \
                        default-jre \
-                       firefox \
                        xvfb \
                        && \
+
+    echo "# Install firefox" && \
+    apt-get install -y firefox=45.0.2+build1-0ubuntu1 && \
 
     echo "# Install google-chrome-stable" && \
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
