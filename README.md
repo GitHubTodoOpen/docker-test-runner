@@ -1,25 +1,8 @@
-# Docker image for running tests
+# Docker image for docker based tests
 
 Docker for testing and build projects at [iGLOO](http://igloo.be).
-Available on Docker Hub: `igloo/test-runner`
+Available on Docker Hub: `igloo/test-runner:docker-[docker_version]-[version]`
 
 ## Features
 
 - git
-- curl
-- wget
-- rsync
-- patch
-- build-essential
-- nvm
-- rvm
-- python
-- mysql-client-5.6
-- phantomjs dependencies (libfreetype6 libfontconfig)
-- wkhtmltopdf 0.12.2
-- default-jre
-- firefox
-- google-chrome-stable
-- xvfb
-- docker-client
-- gcloud sdk
