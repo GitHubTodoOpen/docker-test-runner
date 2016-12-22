@@ -2,24 +2,25 @@
 FROM ubuntu:xenial
 MAINTAINER iGLOO Team <support@igloo.be>
 
-ENV DOCKER_BUCKET get.docker.com
-ENV DOCKER_VERSION 1.12.3
-ENV DOCKER_SHA256 626601deb41d9706ac98da23f673af6c0d4631c4d194a677a9a1a07d7219fa0f
+RUN apt-get update \
+  && apt-get install -y apt-transport-https ca-certificates \
+  && apt-key adv \
+     --keyserver hkp://ha.pool.sks-keyservers.net:80 \
+     --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
+  && echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | tee /etc/apt/sources.list.d/docker.list \
+  && apt-get update \
+  && apt-get install -y docker-engine=1.12.3-0~xenial \
+  && apt-get install -y wget
 
-RUN set -x \
-  && apt-get update && apt-get install -y \
-    git \
-    curl \
+ENV DIND_COMMIT 3b5fac462d21ca164b3778647420016315289034
 
-	&& curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz" -o docker.tgz \
-	&& echo "${DOCKER_SHA256} *docker.tgz" | sha256sum -c - \
-	&& tar -xzvf docker.tgz \
-	&& mv docker/* /usr/local/bin/ \
-	&& rmdir docker \
-	&& rm docker.tgz \
-	&& docker -v
+RUN wget "https://raw.githubusercontent.com/docker/docker/${DIND_COMMIT}/hack/dind" -O /usr/local/bin/dind \
+  && chmod +x /usr/local/bin/dind
 
-COPY docker-entrypoint.sh /usr/local/bin/
+COPY dockerd-entrypoint.sh /usr/local/bin/
 
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["sh"]
+VOLUME /var/lib/docker
+EXPOSE 2375
+
+ENTRYPOINT ["dockerd-entrypoint.sh"]
+CMD []
