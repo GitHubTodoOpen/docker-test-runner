@@ -22,6 +22,12 @@ RUN set -x \
   && pip install awscli \
   && apt-get remove -y python-pip \
 
+  && echo "docker-registry-login" \
+  && git clone --branch 0.0.2 https://github.com/loicmahieu/docker-registry-login.git \
+  && cd docker-registry-login \
+  && ./install.sh /usr/local \
+  && rm -rf docker-registry-login \
+
   && echo "Docker client" \
 	&& curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz" -o docker.tgz \
 	&& echo "${DOCKER_SHA256} *docker.tgz" | sha256sum -c - \
@@ -32,7 +38,6 @@ RUN set -x \
 	&& docker -v
 
 COPY docker-entrypoint.sh /usr/local/bin/
-COPY bin/docker-login /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["sh"]
