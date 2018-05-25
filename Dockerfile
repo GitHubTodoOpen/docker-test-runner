@@ -2,13 +2,7 @@
 FROM ubuntu:16.04
 MAINTAINER iGLOO Team <support@igloo.be>
 
-RUN echo "# Generate locales" && \
-    locale-gen en_US.UTF-8 && \
-    locale-gen fr_BE.UTF-8 && \
-    export LANG=en_US.UTF-8 && \
-    export LC_CTYPE=fr_BE.UTF-8 && \
-
-    echo "# Upgrade apt" && \
+RUN echo "# Upgrade apt" && \
     apt-get update && apt-get upgrade -y && \
 
     echo "# Install git" && \
@@ -30,7 +24,14 @@ RUN echo "# Generate locales" && \
                        libfreetype6 libfontconfig \
                        default-jre \
                        xvfb \
+                       locales \
                        && \
+
+    echo "# Generate locales" && \
+    locale-gen en_US.UTF-8 && \
+    locale-gen fr_BE.UTF-8 && \
+    export LANG=en_US.UTF-8 && \
+    export LC_CTYPE=fr_BE.UTF-8 && \
 
     echo "# Install firefox" && \
     apt-get install -y firefox=45.0.2+build1-0ubuntu1 && \
