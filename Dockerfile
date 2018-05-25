@@ -4,7 +4,6 @@ MAINTAINER iGLOO Team <support@igloo.be>
 
 RUN echo "# Upgrade apt" && \
     apt-get update && apt-get upgrade -y && \
-
     echo "# Install git" && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:git-core/ppa && \
@@ -12,7 +11,6 @@ RUN echo "# Upgrade apt" && \
     apt-get install -y git && \
     git --version && \
     apt-get remove -y software-properties-common && \
-
     echo "# Install common dev dependencies via apt" && \
     apt-get install -y curl \
                        wget \
@@ -26,16 +24,13 @@ RUN echo "# Upgrade apt" && \
                        xvfb \
                        locales \
                        && \
-
     echo "# Generate locales" && \
     locale-gen en_US.UTF-8 && \
     locale-gen fr_BE.UTF-8 && \
     export LANG=en_US.UTF-8 && \
     export LC_CTYPE=fr_BE.UTF-8 && \
-
     echo "# Install firefox" && \
     apt-get install -y firefox=45.0.2+build1-0ubuntu1 && \
-
     echo "# Install google-chrome-stable" && \
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
     sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
@@ -43,17 +38,14 @@ RUN echo "# Upgrade apt" && \
     apt-get update && \
     apt-get install -y google-chrome-stable && \
     apt-get remove -y apt-transport-https && \
-
     echo "# Install nvm" && \
     export NVM_VERSION=v0.33.11 && \
     curl -o- https://raw.githubusercontent.com/creationix/nvm/$NVM_VERSION/install.sh | bash && \
     cp /root/.nvm/nvm.sh /etc/profile.d/ && \
-
     echo "# Install rvm" && \
     gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && \
     curl https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer | bash -s stable --ruby && \
     echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc && \
-
     echo "# Install wkhtmltopdf" && \
     apt-get install -y gdebi \
                        libssl-dev \
@@ -62,7 +54,6 @@ RUN echo "# Upgrade apt" && \
     gdebi --n wkhtmltox-0.12.2.1_linux-trusty-amd64.deb && \
     rm -rf wkhtmltox-0.12.2.1_linux-trusty-amd64.deb && \
     apt-get remove -y gdebi && \
-
     echo "# Install docker client" && \
     export DOCKER_BUCKET=get.docker.com && \
     export DOCKER_VERSION=1.11.2 && \
@@ -74,7 +65,6 @@ RUN echo "# Upgrade apt" && \
   	rmdir docker && \
   	rm docker.tgz && \
   	docker -v && \
-
     echo "# Install google cloud sdk" && \
     # Create an environment variable for the correct distribution
     export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
@@ -84,7 +74,6 @@ RUN echo "# Upgrade apt" && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     # Update and install the Cloud SDK
     apt-get update && apt-get install google-cloud-sdk && \
-
     echo "# Clean" && \
     apt-get clean && SUDO_FORCE_REMOVE=yes apt-get autoremove -y && rm -rf /tmp/*
 
