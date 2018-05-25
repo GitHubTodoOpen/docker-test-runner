@@ -47,13 +47,13 @@ RUN echo "# Upgrade apt" && \
     curl https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer | bash -s stable --ruby && \
     echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc && \
     echo "# Install wkhtmltopdf" && \
-    apt-get install -y gdebi \
-                       libssl-dev \
-                       libxrender-dev && \
-    wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb && \
-    gdebi --n wkhtmltox-0.12.2.1_linux-trusty-amd64.deb && \
-    rm -rf wkhtmltox-0.12.2.1_linux-trusty-amd64.deb && \
-    apt-get remove -y gdebi && \
+    apt install -y wget libxrender1 xfonts-utils xfonts-base xfonts-75dpi libfontenc1 x11-common xfonts-encodings libxfont1 fontconfig && \
+    wget --quiet https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz && \
+    mkdir -p /opt && \
+    tar -xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C /opt && \
+    rm -rf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz && \
+    ln /opt/wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf && \
+    ln /opt/wkhtmltox/bin/wkhtmltoimage /usr/local/bin/wkhtmltoimage && \
     echo "# Install docker client" && \
     export DOCKER_BUCKET=get.docker.com && \
     export DOCKER_VERSION=1.11.2 && \
@@ -73,7 +73,7 @@ RUN echo "# Upgrade apt" && \
     # Import the Google Cloud public key
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     # Update and install the Cloud SDK
-    apt-get update && apt-get install google-cloud-sdk && \
+    apt-get update && apt-get install -y google-cloud-sdk && \
     echo "# Clean" && \
     apt-get clean && SUDO_FORCE_REMOVE=yes apt-get autoremove -y && rm -rf /tmp/*
 
