@@ -78,3 +78,4 @@ RUN echo "# Upgrade apt" && \
     apt-get clean && SUDO_FORCE_REMOVE=yes apt-get autoremove -y && rm -rf /tmp/*
 
 ENV DOCKER_HOST tcp://docker:2375
+ENV BASH_ENV "/etc/profile"
