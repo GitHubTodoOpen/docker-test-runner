@@ -14,12 +14,12 @@ Available on Docker Hub: `igloo/test-runner`
 - nvm
 - rvm
 - python
-- mysql-client-5.6
+- mysql-client-5.7
 - phantomjs dependencies (libfreetype6 libfontconfig)
-- wkhtmltopdf 0.12.2
+- wkhtmltopdf 0.12.4
 - default-jre
-- firefox
+- firefox 64
 - google-chrome-stable
 - xvfb
-- docker-client
+- docker 18.09.1
 - gcloud sdk
