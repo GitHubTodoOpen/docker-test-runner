@@ -1,6 +1,10 @@
 
 FROM ubuntu:18.04
 
+ENV NVM_VERSION v0.34.0
+ENV NPM_CONFIG_UNSAFE_PERM true
+ENV DOCKER_VERSION 18.09.1
+
 RUN echo "# Upgrade apt" && \
     apt-get -qq update && apt-get upgrade -y && \
     echo "# Install git" && \
@@ -38,7 +42,6 @@ RUN echo "# Upgrade apt" && \
     apt-get install -y google-chrome-stable && \
     apt-get remove -y apt-transport-https && \
     echo "# Install nvm" && \
-    export NVM_VERSION=v0.34.0 && \
     curl -o- https://raw.githubusercontent.com/creationix/nvm/$NVM_VERSION/install.sh | bash && \
     cp /root/.nvm/nvm.sh /etc/profile.d/ && \
     echo "# Install rvm" && \
@@ -55,7 +58,6 @@ RUN echo "# Upgrade apt" && \
     ln /opt/wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf && \
     ln /opt/wkhtmltox/bin/wkhtmltoimage /usr/local/bin/wkhtmltoimage && \
     echo "# Install docker" && \
-    export DOCKER_VERSION=18.09.1 && \
     curl -fSL "https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION.tgz" -o docker.tgz && \
   	tar -xzvf docker.tgz && \
   	mv docker/* /usr/local/bin/ && \
