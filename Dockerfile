@@ -1,5 +1,5 @@
 
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
 ENV NVM_VERSION v0.34.0
 ENV NPM_CONFIG_UNSAFE_PERM true
@@ -33,7 +33,7 @@ RUN echo "# Upgrade apt" && \
     export LANG=en_US.UTF-8 && \
     export LC_CTYPE=fr_BE.UTF-8 && \
     echo "# Install firefox" && \
-    apt-get install -y firefox=64.0+build3-0ubuntu0.18.04.1 && \
+    apt-get install -y firefox=65.0.1+build2-0ubuntu0.16.04.1 && \
     echo "# Install google-chrome-stable" && \
     sh -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list' && \
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
