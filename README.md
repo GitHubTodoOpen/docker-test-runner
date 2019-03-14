@@ -8,18 +8,4 @@ Available on Docker Hub: `igloo/test-runner`
 - git
 - curl
 - wget
-- rsync
-- patch
-- build-essential
-- nvm
-- rvm
-- python
-- mysql-client-5.7
-- phantomjs dependencies (libfreetype6 libfontconfig)
-- wkhtmltopdf 0.12.4
-- default-jre
-- firefox 64
-- google-chrome-stable
-- xvfb
-- docker 18.09.1
-- gcloud sdk
+- bash
